@@ -33,3 +33,4 @@ C:\AzureDevops\DemoAzureDevopsApi\obj\Debug\net9.0\refint\DemoAzureDevopsApi.dll
 C:\AzureDevops\DemoAzureDevopsApi\obj\Debug\net9.0\DemoAzureDevopsApi.pdb
 C:\AzureDevops\DemoAzureDevopsApi\obj\Debug\net9.0\DemoAzureDevopsApi.genruntimeconfig.cache
 C:\AzureDevops\DemoAzureDevopsApi\obj\Debug\net9.0\ref\DemoAzureDevopsApi.dll
+C:\AzureDevops\DemoAzureDevopsApi\obj\Debug\net9.0\DemoAzureDevopsApi.sourcelink.json
