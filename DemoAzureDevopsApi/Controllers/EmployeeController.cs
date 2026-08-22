@@ -12,6 +12,7 @@ namespace DemoAzureDevopsApi.Controllers
           new Employee{Id = 2,Name = "David",Department = "HR",Salary = 45000},
           new Employee{Id=3, Name="Samuel", Department="Payroll", Salary=15000},
           new Employee{Id=4, Name="Raju", Department="HR", Salary=25000},
+          new Employee{Id=5, Name="Rani", Department="It", Salary=10000},
         };
  
         // GET: api/Employee
