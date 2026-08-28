@@ -24,5 +24,5 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/*Tests1.csproj'
+    projects: '**/*Tests.csproj'
     arguments: 'configuration Release'
