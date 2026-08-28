@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DemoAzureDevopsApi.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+714075dc4116dd28080ead07e5007339949d5b1a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ebef720f3dc152d503c5ee4f0e3a079fb10f2f9")]
 [assembly: System.Reflection.AssemblyProductAttribute("DemoAzureDevopsApi.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DemoAzureDevopsApi.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
