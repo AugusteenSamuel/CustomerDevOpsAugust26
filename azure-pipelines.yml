@@ -17,10 +17,13 @@ stages:
   dependsOn: Build
  
   jobs:
-  - job: DeployDev
- 
-    steps:
-    - script: echo "Deploying to Dev"
+  - deployment: DeployDev   
+    environment: 'dev'      
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "Deploying to Dev"
  
 - stage: Deploy_QA
   dependsOn: Deploy_Dev
