@@ -6,39 +6,73 @@ pool:
  
 stages:
  
+#  1. BUILD + TEST STAGE
 - stage: Build
+  displayName: "Build and Test"
   jobs:
   - job: BuildJob
- 
     steps:
-    - script: echo "Building Application"
  
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'restore'
+        projects: '**/*.csproj'
+ 
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'build'
+        projects: '**/*.csproj'
+        arguments: '--configuration Release'
+ 
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'test'
+        projects: '**/*Tests.csproj'
+        arguments: '--configuration Release'
+ 
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'publish'
+        projects: '**/*.csproj'
+        arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
+ 
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: 'drop'
+ 
+#  2. DEPLOY TO DEV
 - stage: Deploy_Dev
   dependsOn: Build
- 
   jobs:
-  - deployment: DeployDev   
-    environment: 'dev'      
+  - deployment: DeployDev
+    environment: 'Dev'
     strategy:
       runOnce:
         deploy:
           steps:
           - script: echo "Deploying to Dev"
  
+#  3. DEPLOY TO QA
 - stage: Deploy_QA
   dependsOn: Deploy_Dev
- 
   jobs:
-  - job: DeployQA
+  - deployment: DeployQA
+    environment: 'QA'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "Deploying to QA"
  
-    steps:
-    - script: echo "Deploying to QA"
- 
+#  4. DEPLOY TO PROD
 - stage: Deploy_Prod
   dependsOn: Deploy_QA
- 
   jobs:
-  - job: DeployProd
- 
-    steps:
-    - script: echo "Deploying to Prod"
+  - deployment: DeployProd
+    environment: 'Prod'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "Deploying to Prod"
